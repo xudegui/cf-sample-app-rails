@@ -1,0 +1,24 @@
+resources:
+- name: app_sources
+  type: git
+  source:
+    uri: https://github.com/xudegui/cf-sample-app-rails.git
+- name: staging_deployment
+  type: cf
+  source:
+    api: https://api.sys.xudegui.co
+    username: user20
+    password: pivotal
+    organization: org20
+    space: Workshop
+    skip_cert_check: true
+
+jobs:
+- name: build-deploy
+  serial: true
+  plan:
+  - get: app_sources
+    trigger: true
+  - put: staging_deployment
+    params:
+      manifest: app_sources/manifest.yml
