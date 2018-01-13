@@ -1,4 +1,4 @@
-# Rails Sample App
+# Rails Sample App for SingTel coding workshop
 
 ```cf push```
 
